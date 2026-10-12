@@ -1,0 +1,33 @@
+{
+  "name": "rewear",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ReWear - a pre-loved fashion discovery marketplace (Next.js + MongoDB)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "node --test",
+    "seed": "node --env-file=.env.local scripts/seed.js",
+    "seed:remove": "node --env-file=.env.local scripts/seed.js --remove",
+    "check:images": "node scripts/check-images.js",
+    "smoke": "node scripts/smoke.js"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.12",
+    "mongoose": "^9.11.1",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.12.0",
+    "eslint-config-next": "^16.4.0"
+  }
+}
