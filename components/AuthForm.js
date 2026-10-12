@@ -14,7 +14,7 @@ export default function AuthForm({ mode, next, initialValues = {}, focusSubmit =
   const router = useRouter();
   const toast = useToast();
   const isRegister = mode === 'register';
-  const [values, setValues] = useState({ name: '', email: initialValues.email || '', password: initialValues.password || '', confirmPassword: '', location: '' });
+  const [values, setValues] = useState({ name: '', email: initialValues.email || '', password: initialValues.password || '', confirmPassword: '', role: initialValues.role || 'member', location: '' });
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -61,11 +61,26 @@ export default function AuthForm({ mode, next, initialValues = {}, focusSubmit =
       {formError ? <p className="notice notice-error" role="alert">{formError}</p> : null}
 
       {isRegister ? (
-        <div className="field">
-          <label htmlFor="auth-name">Full name</label>
-          <input {...props('name')} autoComplete="name" maxLength={LIMITS.name.max} />
-          {fieldError('name')}
-        </div>
+        <>
+          <div className="field">
+            <label htmlFor="auth-name">Full name</label>
+            <input {...props('name')} autoComplete="name" maxLength={LIMITS.name.max} />
+            {fieldError('name')}
+          </div>
+
+          <div className="field">
+            <label>Join as</label>
+            <div className="role-options" role="radiogroup" aria-label="Select an account type">
+              {['buyer', 'seller', 'member'].map((option) => (
+                <label key={option} className={`role-option ${values.role === option ? 'is-selected' : ''}`}>
+                  <input type="radio" name="role" value={option} checked={values.role === option} onChange={setField('role')} />
+                  <span>{option === 'seller' ? 'Seller' : option === 'member' ? 'Member' : 'Buyer'}</span>
+                </label>
+              ))}
+            </div>
+            {fieldError('role')}
+          </div>
+        </>
       ) : null}
 
       <div className="field">

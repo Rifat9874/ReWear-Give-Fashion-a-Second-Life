@@ -39,10 +39,11 @@ test('cleanText trims and strips control characters', () => {
 });
 
 test('validateRegister accepts a good registration and normalises the email', () => {
-  const { values, errors } = validateRegister({ name: ' Ayesha Rahman ', email: 'AYESHA@Example.COM ', password: 'Secret123', confirmPassword: 'Secret123', location: 'Dhaka' });
+  const { values, errors } = validateRegister({ name: ' Ayesha Rahman ', email: 'AYESHA@Example.COM ', password: 'Secret123', confirmPassword: 'Secret123', location: 'Dhaka', role: 'seller' });
   assert.deepEqual(errors, {});
   assert.equal(values.email, 'ayesha@example.com');
   assert.equal(values.name, 'Ayesha Rahman');
+  assert.equal(values.role, 'seller');
 });
 
 test('validateRegister reports each problem', () => {
@@ -58,10 +59,11 @@ test('validateRegister requires a letter and a number, and matching passwords', 
   assert.equal(validateRegister({ name: 'Ab', email: 'a@b.co', password: 'Passw0rd1', confirmPassword: '' }).errors.confirmPassword, 'Please confirm your password.');
 });
 
-test('validateRegister does not pass unknown fields through (mass assignment)', () => {
-  const { values } = validateRegister({ name: 'Ab', email: 'a@b.co', password: 'Passw0rd1', confirmPassword: 'Passw0rd1', isAdmin: true, role: 'admin' });
+test('validateRegister allows a valid role and strips unknown fields', () => {
+  const { values } = validateRegister({ name: 'Ab', email: 'a@b.co', password: 'Passw0rd1', confirmPassword: 'Passw0rd1', role: 'member', isAdmin: true, admin: true });
   assert.equal('isAdmin' in values, false);
-  assert.equal('role' in values, false);
+  assert.equal('admin' in values, false);
+  assert.equal(values.role, 'member');
 });
 
 test('validateLogin requires email and password', () => {

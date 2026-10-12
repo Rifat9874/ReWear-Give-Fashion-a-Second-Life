@@ -90,12 +90,12 @@ async function main() {
   const now = Date.now();
   const users = {};
   for (const demo of DEMO_USERS) {
-    users[demo.key] = await User.create({ name: demo.name, email: demo.email, location: demo.location, passwordHash, createdAt: new Date(now - 430 * DAY), updatedAt: new Date(now - 430 * DAY) });
+    users[demo.key] = await User.create({ name: demo.name, email: demo.email, role: demo.role || 'buyer', location: demo.location, passwordHash, createdAt: new Date(now - 430 * DAY), updatedAt: new Date(now - 430 * DAY) });
   }
   // Extra members so there are 100+ accounts in total.
   const extraUsers = generateUsers(Math.max(0, 100 - DEMO_USERS.length) + 4, random);
   const insertedUsers = await User.insertMany(
-    extraUsers.map((u) => ({ name: u.name, email: u.email, location: u.location, bio: u.bio, passwordHash, createdAt: new Date(now - u.daysAgo * DAY), updatedAt: new Date(now - u.daysAgo * DAY) }))
+    extraUsers.map((u) => ({ name: u.name, email: u.email, role: 'buyer', location: u.location, bio: u.bio, passwordHash, createdAt: new Date(now - u.daysAgo * DAY), updatedAt: new Date(now - u.daysAgo * DAY) }))
   );
   extraUsers.forEach((u, index) => { users[u.key] = insertedUsers[index]; });
 

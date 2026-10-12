@@ -13,6 +13,7 @@ export default function NavMenu({ user }) {
   const router = useRouter();
   const toast = useToast();
   const close = () => setOpen(false);
+  const roleLabel = user?.isAdmin ? 'Admin' : user?.role === 'seller' ? 'Seller' : user?.role === 'member' ? 'Member' : 'Buyer';
 
   async function logout() {
     close();
@@ -40,7 +41,9 @@ export default function NavMenu({ user }) {
             <Link href="/dashboard" onClick={close}>Dashboard</Link>
             <Link href="/history" onClick={close}>History</Link>
             {user.isAdmin ? <Link href="/admin" onClick={close}>Admin</Link> : null}
-            <Link href="/account" className="nav-user" onClick={close}>Hi, {user.name.split(' ')[0]}</Link>
+            <Link href="/account" className="nav-user" onClick={close}>
+              Hi, {user.name.split(' ')[0]} <span className="nav-user-role">({roleLabel})</span>
+            </Link>
             <button type="button" className="btn btn-secondary btn-sm" onClick={logout}>
               Log out
             </button>

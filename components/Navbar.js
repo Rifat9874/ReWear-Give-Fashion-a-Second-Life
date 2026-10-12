@@ -30,7 +30,7 @@ export default async function Navbar() {
           </button>
         </form>
 
-        <NavMenu user={user ? { name: user.name, isAdmin: user.isAdmin } : null} />
+        <NavMenu user={user ? { name: user.name, isAdmin: user.isAdmin, role: user.role } : null} />
       </div>
       <nav className="category-bar" aria-label="Categories">
         <div className="container category-bar-inner">

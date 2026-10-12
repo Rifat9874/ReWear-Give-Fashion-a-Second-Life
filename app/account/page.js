@@ -12,6 +12,9 @@ export default async function AccountPage() {
       <header className="page-head page-head-row">
         <div>
           <h1>Your account</h1>
+          <div className="role-badge-row">
+            <span className="badge badge-role">{user.roleLabel || 'Member'}</span>
+          </div>
           <p className="muted">Edit how other members see you and keep your login secure.</p>
         </div>
         <div className="form-actions">

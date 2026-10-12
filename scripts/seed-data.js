@@ -6,12 +6,12 @@ const img = (photoId) => `https://images.unsplash.com/${photoId}?auto=format&fit
 export const DEMO_DOMAIN = '@rewear.demo';
 
 export const DEMO_USERS = [
-  { key: 'admin', name: 'ReWear Admin', email: `admin${DEMO_DOMAIN}`, location: 'Dhaka' },
-  { key: 'ayesha', name: 'Ayesha Rahman', email: `ayesha${DEMO_DOMAIN}`, location: 'Dhanmondi, Dhaka' },
-  { key: 'rafi', name: 'Rafi Chowdhury', email: `rafi${DEMO_DOMAIN}`, location: 'Chattogram' },
-  { key: 'nusrat', name: 'Nusrat Jahan', email: `nusrat${DEMO_DOMAIN}`, location: 'Sylhet' },
-  { key: 'tanvir', name: 'Tanvir Hossain', email: `tanvir${DEMO_DOMAIN}`, location: 'Uttara, Dhaka' },
-  { key: 'buyer', name: 'Demo Buyer', email: `buyer${DEMO_DOMAIN}`, location: 'Dhaka' },
+  { key: 'admin', name: 'ReWear Admin', email: `admin${DEMO_DOMAIN}`, location: 'Dhaka', role: 'admin' },
+  { key: 'ayesha', name: 'Ayesha Rahman', email: `ayesha${DEMO_DOMAIN}`, location: 'Dhanmondi, Dhaka', role: 'seller' },
+  { key: 'rafi', name: 'Rafi Chowdhury', email: `rafi${DEMO_DOMAIN}`, location: 'Chattogram', role: 'seller' },
+  { key: 'nusrat', name: 'Nusrat Jahan', email: `nusrat${DEMO_DOMAIN}`, location: 'Sylhet', role: 'seller' },
+  { key: 'tanvir', name: 'Tanvir Hossain', email: `tanvir${DEMO_DOMAIN}`, location: 'Uttara, Dhaka', role: 'seller' },
+  { key: 'buyer', name: 'Demo Buyer', email: `buyer${DEMO_DOMAIN}`, location: 'Dhaka', role: 'buyer' },
 ];
 
 export const DEMO_ITEMS = [

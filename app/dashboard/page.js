@@ -46,6 +46,9 @@ export default async function DashboardPage() {
       <header className="page-head page-head-row">
         <div>
           <h1>Welcome, {user.name.split(' ')[0]}</h1>
+          <div className="role-badge-row">
+            <span className="badge badge-role">{user.roleLabel || 'Member'}</span>
+          </div>
           <p className="muted">Manage your listings and keep track of your conversations.</p>
         </div>
         <div className="form-actions">

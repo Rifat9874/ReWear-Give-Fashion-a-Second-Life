@@ -20,7 +20,7 @@ export const POST = handle(async (request) => {
   const passwordHash = await bcrypt.hash(values.password, 12); // never store the plain password
   let user;
   try {
-    user = await User.create({ name: values.name, email: values.email, passwordHash, location: values.location });
+    user = await User.create({ name: values.name, email: values.email, passwordHash, role: values.role, location: values.location });
   } catch (error) {
     // Two people registering the same email at the same moment: the unique index catches it.
     if (error?.code === 11000) throw new ApiError(409, 'That email is already registered.', duplicate);

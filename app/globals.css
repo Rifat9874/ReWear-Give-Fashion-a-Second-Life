@@ -190,6 +190,8 @@ code { background: var(--stitch); padding: 0.1em 0.35em; border-radius: 4px; fon
 .notice-success { background: var(--ok-tint); border-color: #bcd5c3; }
 .notice-error { background: var(--danger-tint); border-color: #e3b3af; color: #5c1a17; }
 .badge { display: inline-block; padding: 0.15rem 0.6rem; font-size: 0.78rem; font-weight: 700; border-radius: 999px; background: var(--stitch); color: var(--charcoal); white-space: nowrap; }
+.badge-role { background: var(--forest-tint); color: var(--forest-deep); border: 1px solid rgba(31, 77, 58, 0.4); }
+.role-badge-row { margin: 0.25rem 0 0.5rem; }
 .badge-available, .badge-accepted, .badge-actioned { background: var(--ok-tint); color: var(--forest-deep); }
 .badge-reserved, .badge-pending, .badge-open { background: #fbe9c6; color: #6b4a06; }
 .badge-sold, .badge-declined, .badge-closed, .badge-dismissed { background: #e6e2da; color: #4a4d49; }
@@ -233,6 +235,12 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 .image-preview img { width: 100%; height: 100%; object-fit: cover; }
 .auth-page { max-width: 480px; }
 .auth-card { margin-top: 1.5rem; background: var(--paper); border: 1px solid var(--stitch); border-radius: var(--radius); padding: 1.5rem; }
+.role-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.role-option { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.8rem; border: 1.5px solid var(--stitch); border-radius: var(--radius-sm); background: var(--bone); cursor: pointer; transition: border-color 0.15s, background-color 0.15s; }
+.role-option input { width: auto; accent-color: var(--forest); }
+.role-option.is-selected { border-color: var(--forest); background: var(--forest-tint); }
+.nav-user { display: inline-flex; align-items: center; gap: 0.35rem; }
+.nav-user-role { color: var(--forest); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
 .auth-switch { margin: 0; text-align: center; color: var(--muted); }
 
 /* ---------- Item page ---------- */
